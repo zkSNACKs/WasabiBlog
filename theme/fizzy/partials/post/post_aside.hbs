@@ -1,0 +1,84 @@
+<section class="section aside is-vpadding-15">
+    <div class="columns">
+        <div class="column is-hidden-touch is-1-desktop is-1-widescreen is-2-fullhd"></div>
+        <div class="column is-12-tablet is-10-desktop is-10-widescreen is-8-fullhd">
+            <div class="columns is-multiline">
+                {{!-- previous post: start --}}
+
+                {{!-- whether primary_tag exist --}}
+                {{#if primary_tag}}
+                    {{!-- get # of posts under primary tag, enlarge post card if no other posts --}}
+                    {{#get "posts" filter="tags:{{primary_tag.slug}}"}}
+                    {{plural pagination.total empty="<div class='column card-frame is-6-tablet is-6-desktop'>" 
+                                                singular="<div class='column card-frame is-6-tablet is-6-desktop'>" 
+                                                plural="<div class='column card-frame is-6-tablet is-4-desktop'>"}}
+                    {{/get}}
+                {{else}}
+                    <div class="column card-frame is-6-tablet is-6-desktop">
+                {{/if}}
+                        {{#prev_post}}
+                            <span class="nav-label left is-montserrat has-shadow-lift">{{t "Previous Post"}}</span>
+                                {{> "post/post_card"}}
+                        {{/prev_post}}
+                    </div>
+                {{!-- next post: end --}}
+
+                {{!-- related posts: start --}}
+                {{#if primary_tag}}
+                {{#get "posts" filter="tags:{{primary_tag.slug}}+id:-{{id}}" limit="3" as |related_posts|}}
+                {{#if related_posts}}
+                <div class="column is-full-tablet is-4-desktop">
+                    <article class="box tag-list is-vpadding-2 has-text-centered has-text-light" style="background-image: url({{asset 'images/dark-cover.jpg'}})">
+                        <header class="tag-list-header">
+                            <small class="tag-list-header-topic">&mdash; {{t "TOPIC"}} &mdash;</small>
+                            {{#../primary_tag}}
+                                <a href="{{url}}" title="See all posts from {{name}}"><h3 class="title is-4 has-text-light">{{name}}</h3></a>
+                            {{/../primary_tag}}
+                        </header>
+                        <div class="is-divider only-margin-top-1" {{!-- data-content="TOPIC" --}}></div>
+                        <div class="tag-list-content">
+                            <ul>
+                                {{#foreach related_posts}}
+                                <a href="{{url}}"><li class="has-text-light">{{title}}</li></a>
+                                {{/foreach}}
+                            </ul>
+                        </div>
+                        <footer class="tag-list-footer">
+                            <a href="{{#../primary_tag}}{{url}}{{/../primary_tag}}">
+                            <span>{{plural meta.pagination.total empty=(t "No posts") singular=(t "1 post") plural=(t "See all % posts")}} →</span>
+                            </a>
+                        </footer>
+                    </article>
+                </div>
+                {{!-- <div class="is-divider-vertical is-paddingless"></div> --}}
+                {{/if}}
+                {{/get}}
+                {{/if}}
+                {{!-- related posts: end --}}
+                
+                {{!-- next post: start --}}
+                {{!-- whether primary_tag exist --}}
+                {{#if primary_tag}}
+                    {{!-- get # of posts under primary tag, enlarge post card if no other posts --}}
+                    {{#get "posts" filter="tags:{{primary_tag.slug}}"}}
+                    {{plural pagination.total empty="<div class='column card-frame is-6-tablet is-6-desktop'>" 
+                                                singular="<div class='column card-frame is-6-tablet is-6-desktop'>" 
+                                                plural="<div class='column card-frame is-6-tablet is-4-desktop'>"}}
+                    {{/get}}
+                {{else}}
+                    <div class="column card-frame is-6-tablet is-6-desktop">
+                {{/if}}
+                        {{#next_post}}
+                            <span class="nav-label right is-montserrat has-shadow-lift">{{t "Next Post"}}</span>
+                                {{> "post/post_card"}}
+                        {{/next_post}}
+                    </div>
+                {{!-- next post: end --}}
+
+
+
+            </div>
+        </div>
+        <div class="column is-hidden-touch"></div>
+    </div>
+</section>

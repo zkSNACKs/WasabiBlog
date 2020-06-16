@@ -1,0 +1,53 @@
+{{!-- template: post-archive | 2019.05.28--}}
+
+{{!< default}}
+
+{{#post}}
+<section class="section">
+    <div class="container">
+        <h1 class="title has-text-centered is-montserrat"><i class="iconfont icon-archive"></i> {{title}}</h1>     
+    </div>
+</section>
+<section class="section is-paddingless-top is-mobile-paddingless">
+    <div class="columns">
+        <div class="column is-hidden-touch is-1-desktop is-1-widescreen is-2-fullhd"></div>
+        <div class="column is-12-tablet is-10-desktop is-10-widescreen is-8-fullhd">
+            <article class="single-article">
+                <div class="box is-paddingless is-shadowless is-full-mobile is-centered is-clipped">
+                    <section class="post-wrap is-vpadding-15">
+                        <div class="spacing-15 is-hidden-mobile"></div>
+                        <div class="post-content">
+                            {{#get "posts"}}
+                                {{t "There are {total} posts in total" total=pagination.total}}
+                            {{/get}}
+                            <ul class="post-archive">
+                                {{#get "posts" limit="all" include="authors" order="published_at desc"}}
+                                    {{#foreach posts}}
+                                    <li class='post-archive-item' year="{{date format=(t 'YYYY')}}" month="{{date format=(t 'MMMM')}}">
+                                            <div class="date">
+                                                <time class="button is-static is-size-7">{{date published_at format=(t "MMM DD")}}</time>
+                                            </div>
+                                            <div class="subtitle">
+                                                <a href='{{url}}'>
+                                                    {{title}}
+                                                </a>
+                                                {{#if featured}}
+                                                    <span style="color:var(--main-color)" title="{{t "Featured"}}"><i class="iconfont icon-star"></i></span>
+                                                {{/if}}
+                                                <span class="authors"> - {{#authors}} {{name}} {{/authors}} </span>
+                                            </div>
+                                    </li>
+                                    {{/foreach}}
+                                {{/get}}
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+            </article>
+        </div>
+        <div class="column is-hidden-touch"></div>
+    </div>
+</section>
+{{/post}}
+
+

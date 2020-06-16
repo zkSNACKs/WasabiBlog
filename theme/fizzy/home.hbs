@@ -1,0 +1,31 @@
+{{!--  home.hbs --}}
+
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+{{!-- showcase --}}
+{{> showcase}}
+
+{{!-- main --}}
+{{#get "posts" include="tags,authors" limit=@config.posts_per_page order="published_at desc"}}
+<main class="section">
+    <div class="columns">
+        <div class="column is-hidden-touch is-1-desktop is-1-widescreen is-2-fullhd"></div>
+        <div class="column is-12-tablet is-10-desktop is-10-widescreen is-8-fullhd">
+                {{#foreach posts}}
+                    {{!-- post_item: for index & home cards --}}
+                    {{> list_card}}
+                {{/foreach}}
+        </div>
+        <div class="column is-hidden-touch"></div>
+    </div>
+</main>
+
+{{!-- pagination --}}
+<section class="section is-padding-top-05">
+    <div class="container">
+        {{pagination}}
+    </div>
+</section>
+{{/get}}

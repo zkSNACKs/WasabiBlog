@@ -1,0 +1,16 @@
+<footer class="footer is-centered" style="padding-bottom:3rem;">
+    <div class="content has-text-centered">
+        <p class="copyright">&copy; {{date format="YYYY"}} <a href="{{@site.url}}"><strong class="has-text-grey-darker">{{@site.title}}</strong></a></p>
+        <p class="declare has-text-grey">
+            <script>
+                if (typeof footer_text == 'undefined') {
+                    var footer_text = "{{@site.description}}";
+                };
+            </script>
+            <script>
+                document.write(footer_text);
+            </script>
+            <br>Using <a href="https://fizzy.cc/fizzy-theme/" target="_blank" rel="noopener noreferrer"><strong>The Fizzy Theme</strong> v1.3.0 </a> | Published with <a href="https://ghost.org/" target="_blank" rel="noopener noreferrer"><strong>Ghost</strong></a>
+        </p>
+    </div>
+</footer>

@@ -1,0 +1,24 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+{{!-- CDN for China --}}
+{{!-- <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script> --}}
+
+{{!-- tocify --}}
+<script src="{{asset 'js/jquery.tocify.min.js'}}"></script>
+
+{{!-- toc settings --}}
+<script>
+    if (show_toc){
+        var toc = $("#toc").tocify({
+            selectors: "h2,h3",
+            extendPage: false,
+            highlightDefault: false
+        });
+        var toc = $("#toc-img").tocify({
+            selectors: "h2,h3",
+            extendPage: false,
+            highlightDefault: false
+        });
+    }
+</script>
+<script src="{{asset 'js/toc.js'}}"></script>

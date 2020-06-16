@@ -1,0 +1,43 @@
+{{!-- template: tag-archive | 2019.04.14--}}
+
+{{!< default}}
+
+{{!-- title & content --}}
+{{#post}}
+<section class="section is-paddingless-bottom">
+    <div class="container">
+        <h1 class="title tag-archive-title has-text-centered is-montserrat"><i class="iconfont icon-tags"></i> {{title}}</h1>
+        <div class="content post-content is-size-6-mobile is-georgia">{{content}}</div>      
+    </div>
+</section>
+{{/post}}
+
+{{!-- tag cards --}}
+{{#get "tags" limit="all" filter="tags:-[getting-started]"}}
+<section class="section">
+    <div class="container">
+        <div class="columns is-mobile is-multiline">
+            {{#foreach tags}}
+            <div class="column tag-archive-item is-3-desktop is-4-tablet is-6-mobile can-scale">
+                <a href="{{url}}" alt="{{description}}" title="{{description}}">
+                <div class="tag-card has-text-centered">
+                    {{#if feature_image}}
+                    <div class="tag-image" style="background-image:url({{img_url feature_image size="medium"}});"><div class="mask"></div></div>
+                    {{else}}
+                    <div class="tag-image noimg"><div class="mask"></div></div>
+                    {{/if}}
+                    <div class="tag-info">
+                        <h2 class="tag-name">{{name}}</h2>
+                        {{#get "posts" filter="tags:{{slug}}"}}
+                        <div class="post-count">{{plural pagination.total empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}</div>
+                        {{/get}}
+                    </div>
+                </div>
+                </a>
+            </div>
+            {{/foreach}}
+        </div>
+    </div>
+</section>
+{{/get}}
+

@@ -1,0 +1,81 @@
+{{!-- template: full-width | 2019.05.10--}}
+
+{{!< default}}
+
+{{#post}}
+<section class="hero">
+    <article class="single-article">
+        <div class="box is-paddingless is-shadowless is-full-mobile is-centered">
+            {{!-- featured_image --}}
+            {{#if feature_image}}
+            <div class="featured-image">
+                <div class="featured-image" style="background-image:url({{img_url feature_image}});">
+                    {{!-- featured post label --}}
+                    {{#if featured}}
+                    <div class="post-wrap full-width is-vpadding-15" style="position:relative;height:inherit;">
+                        <span class="featured-label large is-montserrat" title="Featured Post"><i class="iconfont icon-like"></i> {{t "Featured"}}</span>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            {{/if}}
+
+            <div class="columns">
+                <div class="column is-hidden-touch is-1-desktop is-1-widescreen is-2-fullhd"></div>
+                <div class="column is-12-tablet is-10-desktop is-10-widescreen is-8-fullhd">
+
+                <div class="post-wrap full-width is-vpadding-15">
+                    <div class="spacing-15 is-hidden-mobile"></div> 
+                    {{!-- meta --}}
+                    <div class="has-2-ends is-montserrat is-uppercase is-size-7">
+                        <div class="end date">{{date format=(t "DD MMMM YYYY")}}</div>
+                        <div class="end reading_time">{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</div>
+                    </div>
+                    {{!-- title --}}
+                    <h1 class="title is-montserrat">{{title}}</h1>
+                    {{!-- tags --}}
+                    {{#has tag="count:>0"}}
+                    <div class="buttons tags has-text-weight-semibold">
+                        <span class="button is-static is-size-7-mobile" style="min-width:2.5em">
+                            {{#has tag="count:1"}}<i class="iconfont icon-tag"></i>{{/has}}
+                            {{#has tag="count:>1"}}<i class="iconfont icon-tags"></i>{{/has}}
+                        </span>
+                        {{#foreach tags}}
+                        <a href="{{url}}" class="button is-light is-size-7-mobile has-text-weight-semibold">{{name}}</a>
+                        {{/foreach}}
+                    </div>
+                    {{/has}}
+
+                    {{!-- content --}}
+                    <div class="content post-content is-size-6-mobile is-georgia">{{content}}</div>
+                    
+                    {{!-- author box --}}
+                    {{> "post/post_author"}}
+                    
+                </div>
+            </div>
+            <div class="column is-hidden-touch" style="position:relative;">
+                {{#if feature_image}}
+                    <div id="toc-img" class="is-absolute"></div>
+                {{else}}
+                    <div id="toc"></div>
+                {{/if}}
+            </div>
+        </div>
+    </article>
+</section>
+<section class="section is-vpadding-15"></section>
+
+{{!-- toc --}}
+{{> "post/post_toc"}}
+
+{{!-- aside section (related post, prev & next) --}}
+{{> "post/post_aside"}}
+
+{{!-- post footer for js --}}
+{{> "post/post_footer"}}
+
+{{!-- comment --}}
+{{> "post/post_comment"}}
+
+{{/post}}

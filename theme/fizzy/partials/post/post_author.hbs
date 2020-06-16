@@ -1,0 +1,34 @@
+{{!-- post: author box --}}
+<div class="authors">
+    <div class="columns is-multiline">
+    {{#foreach authors}}
+    <div class="column">
+        <div class="box about-author is-montserrat has-text-centered">
+            <a href="{{url}}" class="has-text-grey-darker">
+                <figure class="image is-96x96 is-margin-auto">
+                {{#if profile_image}} 
+                <img class="image-squared box author-avatar" src="{{img_url profile_image size="small"}}" alt="{{name}}" title="{{name}}">
+                {{else}}
+                <img class="image-squared box author-avatar" src="{{asset 'images/user-avatar-default.png'}}" alt="{{name}}" title="{{name}}">
+                {{/if}}
+                </figure>                                
+                <div class="name">{{name}}</div>
+            </a>
+            {{!-- author: meta --}}
+            <ul class="meta-info is-size-6 has-text-grey-light">
+                {{#if twitter}}<li><a href="{{twitter_url}}" class=" has-text-grey"><i class="iconfont icon-twitter"></i></a></li>{{/if}}
+                {{#if facebook}}<li><a href="{{facebook_url}}" class=" has-text-grey"><i class="iconfont icon-facebook"></i></a></li>{{/if}}
+                {{#if website}}<li><a href="{{website}}" class=" has-text-grey"><i class="iconfont icon-link"></i></a></li>{{/if}}
+                {{#if location}}<li><span class=" has-text-grey"><i class="iconfont icon-location"></i> {{location}}</span></li>{{/if}}
+            </ul>
+            {{!-- author: bio --}}
+            <div class="bio is-vcentered">{{bio}}</div>
+            {{!-- author: cta --}}
+            <div class="is-size-6">
+                <a href="{{url}}" rel="nofollow"><strong class="has-text-grey-darker">{{t "See all posts by {name}" name=name}}</strong></a>
+            </div>
+        </div>
+    </div>
+    {{/foreach}}
+    </div>
+</div>

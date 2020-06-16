@@ -1,0 +1,95 @@
+{{!-- post_item: for index & home cards --}}
+<article class="box is-paddingless is-clipped has-shadow-lift margin-bottom-25 can-scale">
+    <div class="columns post-card is-marginless">
+        {{!-- featured_image --}}
+        {{#if feature_image}}
+            <a class="column is-hidden-mobile is-paddingless" href="{{url}}" alt="{{title}}" title="{{title}}">
+                <div class="featured-image" style="background-image:url({{img_url feature_image size="medium"}});"></div>    
+            </a>
+            <a class="column is-hidden-tablet" href="{{url}}" alt="{{title}}" title="{{title}}">
+                <div class="featured-image" style="background-image:url({{img_url feature_image size="medium"}});"></div>    
+            </a>
+        
+        {{!-- post info --}}
+        <div class="column is-7 is-paddingless">
+        {{else}}
+        <div class="column is-12 is-paddingless">
+        {{/if}}
+            <div class="post-info">
+                {{#if featured}}
+                    {{#if feature_image}}
+                    <span class="featured-label has-img is-montserrat" title="{{t "Featured"}}"><i class="iconfont icon-star"></i> <span>{{t "Featured"}}</span></span>
+                    {{else}}
+                    <span class="featured-label no-img is-montserrat" title="{{t "Featured"}}"><i class="iconfont icon-star"></i> <span>{{t "Featured"}}</span></span>
+                    {{/if}}
+                {{/if}}
+
+                {{!-- meta --}}
+                <div class="level is-mobile is-montserrat is-uppercase is-margin-bottom-1">
+                    <div class="level-left">
+                        {{#primary_tag}}
+                        <div class="level-item">
+                            {{!-- display one tag --}}
+                            <div class="buttons are-small">
+                                <a href="{{url}}" class="button is-light has-text-weight-semibold">{{name}}</a>
+                            </div>
+                        </div>
+                        {{/primary_tag}}
+                        <div class="level-item is-size-7 ">
+                            {{date format=(t "DD MMMM YYYY")}}
+                        </div>
+                    </div>
+                </div>
+
+                {{!-- heading & content --}}
+                <a href="{{url}}" class="is-montserrat has-text-black">
+                    <h1 class="title is-3 is-size-5-mobile is-margin-bottom-1">{{title}}</h1>
+                </a>
+                {{#if feature_image}}
+                <p class="is-montserrat is-hidden-mobile" style="margin-bottom:1.5rem;">
+                {{else}}
+                <p class="is-montserrat is-size-7-mobile is-margin-bottom-1" style="margin-bottom:1.5rem;">
+                {{/if}}
+                    {{!-- {{#if meta_description}}
+                        {{meta_description}}
+                    {{else}} --}}
+                        {{excerpt words="38"}}
+                    {{!-- {{/if}} --}}
+                </p>
+
+                {{!-- author--}}
+                <div class="media is-hidden-mobile">
+                    <div class="media-left">
+                        <div class="columns is-vcentered">
+                            
+                            {{#primary_author}}
+                            <div class="column is-narrow">
+                                <a href="{{url}}">
+                                    <figure class="image is-32x32">
+                                    <img class="image-squared round-border-6" src="
+                                        {{#if profile_image}}
+                                            {{img_url profile_image size="icon"}}
+                                        {{else}}
+                                            {{asset 'images/user-avatar-default.png'}}
+                                        {{/if}}
+                                    " alt="{{name}}" title="{{name}}">
+                                    </figure>
+                                </a>
+                            </div>
+
+                            <div class="column is-narrow has-text-weight-bold is-hpaddingless">
+                                <a href="{{url}}" class="has-text-grey-dark">{{name}}</a>
+                            </div>
+                            {{/primary_author}}
+                            {{#has author="count:>1"}}
+                            <div class="column">
+                                and others
+                            </div>
+                            {{/has}}
+                        </div> 
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+</article>
