@@ -17,7 +17,7 @@
     ],
     "dependencies": {},
     "config": {
-        "posts_per_page": 8,
+        "posts_per_page": 20,
         "image_sizes": {
             "icon": {
                 "width": 64
