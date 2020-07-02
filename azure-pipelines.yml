@@ -24,4 +24,4 @@ steps:
     releaseNotesSource: 'inline'
     isPreRelease: true
     changeLogCompareToRelease: 'lastFullRelease'
-    changeLogType: 'commitBased'
+    changeLogType: 'issueBased'
