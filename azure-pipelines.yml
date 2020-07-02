@@ -9,7 +9,7 @@ steps:
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: 'theme'
-    includeRootFolder: true
+    includeRootFolder: false
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/fizzy.zip'
     replaceExistingArchive: true
