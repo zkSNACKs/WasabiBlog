@@ -13,3 +13,15 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
+- task: GitHubRelease@1
+  inputs:
+    gitHubConnection: 'github.com_molnard'
+    repositoryName: 'zkSNACKs/WasabiBlog'
+    action: 'create'
+    target: '$(Build.SourceVersion)'
+    tagSource: 'gitTag'
+    title: 'Fizzy theme'
+    releaseNotesSource: 'inline'
+    isPreRelease: true
+    changeLogCompareToRelease: 'lastFullRelease'
+    changeLogType: 'commitBased'
