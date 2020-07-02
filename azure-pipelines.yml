@@ -20,7 +20,7 @@ steps:
     action: 'create'
     target: '$(Build.SourceVersion)'
     tagSource: 'userSpecifiedTag'
-    tag: '$(BuildID)'
+    tag: '$(Build.BuildNumber)'
     title: 'Fizzy theme'
     isPreRelease: true
     changeLogCompareToRelease: 'lastFullRelease'
