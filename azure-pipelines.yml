@@ -19,10 +19,9 @@ steps:
     repositoryName: 'zkSNACKs/WasabiBlog'
     action: 'create'
     target: '$(Build.SourceVersion)'
-    tagSource: 'gitTag'
-    tagPattern: '$(Build.BuildNumber)'
+    tagSource: 'userSpecifiedTag'
+    tag: 'test'
     title: 'Fizzy theme'
-    releaseNotesSource: 'inline'
     isPreRelease: true
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'issueBased'
