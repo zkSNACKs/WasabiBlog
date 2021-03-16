@@ -22,6 +22,6 @@ steps:
     tagSource: 'userSpecifiedTag'
     tag: '$(Build.BuildNumber)'
     title: 'Fizzy theme'
-    isPreRelease: true
     changeLogCompareToRelease: 'lastFullRelease'
-    changeLogType: 'issueBased'
+    changeLogType: 'commitBased'
+    
